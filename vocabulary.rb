@@ -4,11 +4,10 @@ require 'colorize'
 
 module CaliforniaRealEstateExamPrep
   class PracticeExam
-    QUESTIONS_DATABASE = 'database-FT10Chpt.csv'
+    QUESTIONS_DATABASE = 'database-vocabulary.csv'
 
     def initialize
       @progress = { correct: 0, incorrect: 0 }
-      @row_num = -1
 
       while true
         question = generate_question
@@ -26,15 +25,13 @@ module CaliforniaRealEstateExamPrep
     end
 
     def select_random_row
-        @row_num = (@row_num + 1) % all_rows.count
-        all_rows[@row_num]
-      # row_count = all_rows.count
-      # random_row_index = Random.new.rand(0...row_count)
-      # all_rows[random_row_index]
+      row_count = all_rows.count
+      random_row_index = Random.new.rand(0...row_count)
+      all_rows[random_row_index]
     end
 
     def all_rows
-        @all_rows ||= CSV.read(QUESTIONS_DATABASE, { headers: :first_row })
+      @all_rows ||= CSV.read(QUESTIONS_DATABASE, { headers: :first_row })
     end
 
     def check_answer(row)
