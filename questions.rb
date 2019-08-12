@@ -4,7 +4,7 @@ require 'colorize'
 
 module CaliforniaRealEstateExamPrep
   class PracticeExam
-    QUESTIONS_DATABASE = 'database-FT10Chpt.csv'
+    QUESTIONS_DATABASE = 'database-' + File.basename($0, File.extname($0)) + '.csv'
 
     def initialize
       @progress = { correct: 0, incorrect: 0 }
